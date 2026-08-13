@@ -1,0 +1,10 @@
+{
+  "name": "snip-cli",
+  "private": true,
+  "bin": {
+    "snip": "cli.js"
+  },
+  "scripts": {
+    "snip": "node cli.js"
+  }
+}
