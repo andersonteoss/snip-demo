@@ -13,6 +13,7 @@ This repository uses one branch per layer and mounts each layer into `main` as a
 - `backend/` -> tracks branch `backend`
 - `frontend/` -> tracks branch `frontend`
 - `cli/` -> tracks branch `cli`
+- `bundle/` -> tracks generated branch `bundle` (release output)
 
 ## API contract
 
@@ -69,3 +70,19 @@ git push
 ```
 
 `main` is the pinned snapshot of all layer commits.
+
+## Build the generated bundle
+
+`bundle/` is generated output, not hand-edited source. Build it from `main` with:
+
+```bash
+node scripts/build-bundle.mjs
+```
+
+This script updates source submodules to branch tips, builds the frontend, assembles
+`bundle/` (API + CLI + built UI), and commits pointer bumps only when there are
+actual changes. Use `--push` to push `bundle` and `main`:
+
+```bash
+node scripts/build-bundle.mjs --push
+```
