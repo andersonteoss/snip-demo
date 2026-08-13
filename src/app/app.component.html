@@ -1,24 +1,30 @@
 <main class="page">
-  <section class="card">
-    <h1>Snip</h1>
-    <p class="subtitle">Create short links from long URLs.</p>
+  <div class="hero-glow" aria-hidden="true"></div>
 
-    <form class="form" (ngSubmit)="submit()">
+  <header class="hero">
+    <h1 class="hero-title">Shorten links without clutter.</h1>
+    <p class="hero-subtitle">Paste a long URL, get a clean short link, track hits in one place.</p>
+
+    <form class="chat-form" (ngSubmit)="submit()">
       <input
+        class="chat-input"
         type="url"
         name="url"
         [(ngModel)]="urlInput"
         placeholder="https://example.com"
         autocomplete="off"
       />
-      <button type="submit" [disabled]="submitting()">
+      <button class="chat-button" type="submit" [disabled]="submitting()">
         {{ submitting() ? 'Creating...' : 'Shorten' }}
       </button>
     </form>
+  </header>
 
+  @if (createdLink() || error()) {
+    <section class="card notice-card">
     @if (createdLink()) {
       <p class="status success">
-        Short URL:
+        Short URL
         <a [href]="createdLink()!.shortUrl" target="_blank" rel="noopener">{{ createdLink()!.shortUrl }}</a>
       </p>
     }
@@ -26,10 +32,11 @@
     @if (error()) {
       <p class="status error">{{ error() }}</p>
     }
-  </section>
+    </section>
+  }
 
-  <section class="card">
-    <h2>All Links</h2>
+  <section class="card links-card">
+    <h2 class="section-title">All Links</h2>
 
     @if (loading()) {
       <p class="muted">Loading links...</p>
@@ -37,7 +44,7 @@
       <p class="muted">No links yet.</p>
     } @else {
       <div class="table-wrap">
-        <table>
+        <table class="links-table">
           <thead>
             <tr>
               <th>Code</th>

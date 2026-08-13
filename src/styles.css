@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+	--bg-page: #080b11;
+	--text-primary: #f5f7ff;
+	--text-muted: #a4afc4;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	background:
+		radial-gradient(circle at 20% 120%, rgba(255, 141, 112, 0.12), transparent 45%),
+		radial-gradient(circle at 80% 130%, rgba(255, 109, 162, 0.1), transparent 45%),
+		var(--bg-page);
+	color: var(--text-primary);
+	font-family: 'Space Grotesk', 'Manrope', 'Trebuchet MS', sans-serif;
+	line-height: 1.55;
+}
